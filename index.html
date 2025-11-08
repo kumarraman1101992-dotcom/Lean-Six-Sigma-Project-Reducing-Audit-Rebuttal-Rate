@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lean Six Sigma Project - Audit Rebuttal Rate Reduction</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --color-1: #291839;
+      --color-2: #33194D;
+      --color-3: #4D2871;
+      --color-4: #663795;
+      --color-5: #7A579E;
+      --color-6: #947AAD;
+      --color-7: #ADA7B4;
+      --color-8: #C1C1C1;
+      --color-bg: #E0E0E0;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--color-bg);
+      font-family: 'Quicksand', sans-serif;
+      color: var(--color-1);
+      line-height: 1.6;
+      overflow-x: hidden;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      background-image: linear-gradient(135deg, var(--color-8) 25%, transparent 25%), 
+                        linear-gradient(225deg, var(--color-8) 25%, transparent 25%);
+      background-position: 0 0, 12.5px 12.5px;
+      background-size: 25px 25px;
+    }
+
+    header {
+      max-width: 900px;
+      margin: 3em auto 1.5em auto;
+      padding: 2.5em 3em 3em 3em;
+      background-color: var(--color-5);
+      border-radius: 14px;
+      box-shadow: 0 10px 20px rgba(122, 87, 158, 0.85);
+      color: white;
+      text-align: center;
+      letter-spacing: 0.1em;
+      font-weight: 900;
+      border: 6px solid var(--color-4);
+    }
+
+    header h1 {
+      font-size: 3.2em;
+      margin: 0 0 0.3em 0;
+    }
+
+    header h2 {
+      font-size: 2em;
+      margin: 0 0 0.7em 0;
+      font-weight: 800;
+      color: var(--color-bg);
+      text-shadow: 1px 1px 2px var(--color-2);
+    }
+
+    header p {
+      font-size: 1.3em;
+      margin: 0.5em 0;
+      font-weight: 700;
+      color: var(--color-bg);
+      text-shadow: 1px 1px 2px var(--color-2);
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 2em 2.5em;
+      background: white;
+      margin-bottom: 2.5em;
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(99, 74, 173, 0.45);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s cubic-bezier(.22,.61,.36,1);
+      border-left: 10px solid var(--color-4);
+      font-weight: 700;
+      font-size: 1.1em;
+      color: var(--color-2);
+      letter-spacing: 0.03em;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: var(--color-3);
+      font-weight: 900;
+      font-size: 2em;
+      margin-bottom: 0.4em;
+      letter-spacing: 0.04em;
+    }
+
+    p {
+      margin: 0.6em 0 1.2em 0;
+      color: var(--color-2);
+      line-height: 1.5;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5em;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(120, 110, 160, 0.45);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s cubic-bezier(.22,.61,.36,1);
+      border: 3px solid var(--color-4);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 1.1em;
+    }
+
+    table.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    th, td {
+      padding: 16px 22px;
+      border-bottom: 3px solid var(--color-8);
+      text-align: left;
+      color: var(--color-2);
+    }
+
+    th {
+      background-color: var(--color-6);
+      color: var(--color-bg);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+    }
+
+    footer {
+      background-color: var(--color-2);
+      color: var(--color-bg);
+      text-align: center;
+      padding: 1.5em 1em;
+      font-weight: 800;
+      font-size: 1.1em;
+      letter-spacing: 0.08em;
+      box-shadow: 0 -5px 15px rgba(41, 24, 57, 0.85);
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      user-select: none;
+      border-top: 5px solid var(--color-4);
+    }
+
+    @media (max-width: 650px) {
+      body {
+        background-size: 18px 18px;
+      }
+
+      header {
+        padding: 2em 2em 2.5em 2em;
+      }
+
+      header h1 {
+        font-size: 2.6em;
+      }
+      header h2 {
+        font-size: 1.6em;
+      }
+      section {
+        padding: 1.8em 1.8em;
+        font-size: 1em;
+      }
+      table {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lean Six Sigma Project</h1>
+    <h2>Reducing Audit Rebuttal Rate in AR Quality - RCM</h2>
+    <p><strong>Department:</strong> Quality Assurance</p>
+    <p><strong>Prepared By:</strong> Kumar Raman <span>(Role: Project Lead)</span></p>
+    <p><strong>Duration:</strong> April 2022 - June 2022</p>
+  </header>
+
+  <section>
+    <h2>Executive Summary</h2>
+    <p>This project aimed to reduce the AR audit rebuttal rate from 13% to below 5% within 3 months to increase audit consistency, reduce rework and cycle time, and strengthen stakeholder confidence in Quality Assurance.</p>
+  </section>
+
+  <section>
+    <h2>Define Phase</h2>
+    <p><strong>Objective:</strong> Reduce reiterations and improve audit accuracy for denial resolution and claims processing.</p>
+    <p><strong>Scope:</strong> AR quality audits for denial resolution and claims processing across client Lines of Business, including QA workflows, calibration, SOP alignment, and feedback communication.</p>
+    <p><strong>Approach:</strong> DMAIC methodology following Lean Six Sigma principles.</p>
+  </section>
+
+  <section>
+    <h2>Measure Phase</h2>
+    <p>Collected baseline data on audit rebuttal rates and rework instances. Established key metrics such as rebuttal percentage, audit cycle time, and audit consistency scores.</p>
+  </section>
+
+  <section>
+    <h2>Analyze Phase</h2>
+    <p>Performed root cause analysis identifying issues in SOP deviations, feedback communication lapses, and calibration inconsistencies.</p>
+  </section>
+
+  <section>
+    <h2>Improve Phase</h2>
+    <p>Implemented revised SOPs, enhanced communication protocols, and conducted targeted training for auditors aligned with new standards.</p>
+  </section>
+
+  <section>
+    <h2>Control Phase</h2>
+    <p>Established control charts, ongoing monitoring and periodic calibration reviews, resulting in sustained improvement and process stability.</p>
+  </section>
+
+  <section>
+    <h2>Results and Conclusion</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Before Improvement</th>
+          <th>After Improvement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Audit Rebuttal Rate</td>
+          <td>13%</td>
+          <td>4.5%</td>
+        </tr>
+        <tr>
+          <td>Cycle Time Reduction</td>
+          <td>7 days</td>
+          <td>3.5 days</td>
+        </tr>
+        <tr>
+          <td>Audit Consistency Score</td>
+          <td>72%</td>
+          <td>90%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>The project achieved the objective with significant reductions in audit rebuttal rates and cycle times, increasing overall quality assurance rigor and stakeholder confidence.</p>
+  </section>
+
+  <footer>
+    © 2025 Kumar Raman. All rights reserved.
+  </footer>
+
+  <script>
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section, table').forEach(elem => {
+      observer.observe(elem);
+    });
+  </script>
+</body>
+</html>
