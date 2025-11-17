@@ -26,6 +26,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background-color: var(--color-bg);
@@ -36,9 +40,14 @@
       letter-spacing: 0.02em;
       font-weight: 600;
       position: relative;
+      background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwwUAxEQMDAwQAEEMDAzUxQTEyAVIiI4LS0rODk0Nzg5OTk6Pjo4OjMrNzk0Nzc/O0L/2wBDAQICAgMDAwYDAwYMCAcIDAwICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgL/wAARCADIAMgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//Z');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
 
-    /* Abstract translucent background overlay */
+    /* Enhanced translucent overlay with image */
     body::before {
       content: '';
       position: fixed;
@@ -46,20 +55,12 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: 
-        radial-gradient(circle at 20% 30%, var(--color-gradient-start) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, var(--color-gradient-end) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(168, 139, 250, 0.1) 0%, transparent 40%),
-        linear-gradient(135deg, var(--color-8) 25%, transparent 25%), 
-        linear-gradient(225deg, var(--color-8) 25%, transparent 25%);
-      background-position: 0 0, 0 0, 0 0, 0 0, 12.5px 12.5px;
-      background-size: 100% 100%, 100% 100%, 100% 100%, 25px 25px, 25px 25px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(250, 245, 255, 0.94) 50%, rgba(255, 255, 255, 0.92) 100%);
       pointer-events: none;
-      z-index: 0;
-      opacity: 0.7;
+      z-index: -1;
     }
 
-    /* Animated gradient orbs */
+    /* Animated gradient orbs - reduced opacity for subtlety */
     body::after {
       content: '';
       position: fixed;
@@ -68,11 +69,11 @@
       width: 200%;
       height: 200%;
       background: 
-        radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.15) 0%, transparent 25%),
-        radial-gradient(circle at 70% 60%, rgba(249, 115, 22, 0.12) 0%, transparent 25%);
+        radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 70% 60%, rgba(249, 115, 22, 0.06) 0%, transparent 25%);
       animation: float 20s ease-in-out infinite;
       pointer-events: none;
-      z-index: 0;
+      z-index: -1;
     }
 
     @keyframes float {
@@ -93,13 +94,25 @@
       padding: 3em 3em 3.5em 3em;
       background: linear-gradient(135deg, var(--color-3) 0%, var(--color-4) 100%);
       border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+      box-shadow: 0 25px 50px rgba(108, 59, 214, 0.35), 
+                  0 10px 20px rgba(0, 0, 0, 0.15),
+                  0 0 0 1px rgba(255, 255, 255, 0.3) inset;
       color: white;
       text-align: center;
       letter-spacing: 0.05em;
       font-weight: 700;
-      border: 3px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      transform: translateZ(0);
+      transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    header:hover {
+      box-shadow: 0 30px 60px rgba(108, 59, 214, 0.4), 
+                  0 15px 30px rgba(0, 0, 0, 0.2),
+                  0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+      transform: translateY(-5px) translateZ(0);
     }
 
     header h1 {
@@ -111,6 +124,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      letter-spacing: 0.03em;
     }
 
     header h2 {
@@ -119,39 +133,67 @@
       font-weight: 700;
       color: var(--color-8);
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.02em;
     }
 
     header p {
-      font-size: 1.4em;
+      font-size: 1.3em;
       margin: 0.6em 0;
       font-weight: 600;
       color: var(--color-7);
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      letter-spacing: 0.01em;
     }
 
     header p strong {
       color: var(--color-accent);
       font-weight: 700;
+      letter-spacing: 0.02em;
     }
 
     section {
       max-width: 1100px;
       margin: auto;
-      padding: 2.5em 3em;
-      background: rgba(255, 255, 255, 0.95);
-      margin-bottom: 2em;
+      padding: 2.8em 3.2em;
+      background: rgba(255, 255, 255, 0.88);
+      margin-bottom: 2.2em;
       border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(139, 92, 246, 0.25);
+      box-shadow: 0 20px 45px rgba(108, 59, 214, 0.22), 
+                  0 8px 16px rgba(0, 0, 0, 0.12),
+                  0 0 0 1px rgba(139, 92, 246, 0.15) inset;
       opacity: 0;
       transform: translateY(40px);
-      transition: all 0.7s cubic-bezier(.22,.61,.36,1);
-      border-left: 8px solid var(--color-4);
-      border-right: 1px solid var(--color-7);
+      transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+      border-left: 6px solid var(--color-4);
+      border-right: 2px solid var(--color-7);
+      border-top: 2px solid rgba(139, 92, 246, 0.1);
+      border-bottom: 2px solid rgba(139, 92, 246, 0.1);
       font-weight: 600;
       font-size: 1.1em;
       color: var(--color-2);
       letter-spacing: 0.02em;
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Tab shine effect */
+    section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    section:hover::before {
+      opacity: 0.3;
     }
 
     section.visible {
@@ -174,42 +216,45 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 60px;
-      height: 4px;
+      width: 70px;
+      height: 5px;
       background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-4) 100%);
-      border-radius: 2px;
+      border-radius: 3px;
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
     }
 
     p {
-      margin: 0.8em 0 1.3em 0;
+      margin: 0.9em 0 1.4em 0;
       color: var(--color-2);
-      line-height: 1.7;
+      line-height: 1.8;
+      font-size: 1.05em;
     }
 
     p strong {
       color: var(--color-3);
       font-weight: 700;
+      letter-spacing: 0.01em;
     }
 
     table {
       width: 100%;
-      border-collapse: collapse;
-      margin-top: 1.5em;
-      border-radius: 16px;
-      box-shadow: 0 12px 28px rgba(139, 92, 246, 0.3);
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 2em;
+      border-radius: 18px;
+      box-shadow: 0 18px 40px rgba(108, 59, 214, 0.25), 
+                  0 8px 16px rgba(0, 0, 0, 0.1),
+                  0 0 0 1px rgba(139, 92, 246, 0.2) inset;
       opacity: 0;
       transform: translateY(40px);
-      transition: all 0.7s cubic-bezier(.22,.61,.36,1);
+      transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
       font-weight: 600;
       letter-spacing: 0.02em;
-      font-size: 1.1em;
-      background: white;
+      font-size: 1.08em;
+      background: rgba(255, 255, 255, 0.6);
       overflow: hidden;
-    }
-
-    table thead,
-    table tbody {
-      border: 2px solid var(--color-6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
     table.visible {
@@ -217,99 +262,89 @@
       transform: translateY(0);
     }
 
-    th, td {
-      padding: 18px 24px;
-      text-align: left;
-      color: var(--color-2);
-      border-right: 2px solid var(--color-6);
-      border-bottom: 2px solid var(--color-7);
-    }
-
-    th:first-child,
-    td:first-child {
-      border-left: 2px solid var(--color-6);
-    }
-
-    th {
-      border-top: 2px solid var(--color-6);
-    }
-
-    tbody tr:last-child td {
-      border-bottom: 2px solid var(--color-6);
-    }
-
-    th:first-child {
-      border-top-left-radius: 14px;
-    }
-
-    th:last-child {
-      border-top-right-radius: 14px;
-    }
-
-    tbody tr:last-child td:first-child {
-      border-bottom-left-radius: 14px;
-    }
-
-    tbody tr:last-child td:last-child {
-      border-bottom-right-radius: 14px;
-    }
-
-    tbody tr {
-      transition: all 0.3s ease;
-    }
-
-    tbody tr:hover {
-      background-color: var(--color-8);
-      transform: scale(1.01);
-    }
-
-    th {
+    thead {
       background: linear-gradient(135deg, var(--color-4) 0%, var(--color-3) 100%);
+    }
+
+    th {
+      padding: 20px 26px;
+      text-align: left;
       color: white;
       font-weight: 800;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       font-size: 0.95em;
+      position: relative;
+      z-index: 2;
+    }
+
+    td {
+      padding: 18px 26px;
+      text-align: left;
+      color: var(--color-2);
+      border-bottom: 2px solid rgba(196, 181, 253, 0.4);
+      background: rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover td {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(249, 115, 22, 0.05) 100%);
+      transform: translateX(8px);
+      box-shadow: inset 0 0 15px rgba(108, 59, 214, 0.1);
+    }
+
+    tbody tr:hover {
+      background: transparent;
     }
 
     td:nth-child(2) {
       color: var(--color-accent);
       font-weight: 700;
+      font-size: 1.1em;
     }
 
     td:nth-child(3) {
       color: var(--color-success);
       font-weight: 700;
+      font-size: 1.1em;
     }
 
     footer {
       background: linear-gradient(135deg, var(--color-2) 0%, var(--color-1) 100%);
       color: var(--color-7);
       text-align: center;
-      padding: 2em 1.5em;
+      padding: 2.2em 1.5em;
       font-weight: 700;
       font-size: 1.1em;
       letter-spacing: 0.08em;
-      box-shadow: 0 -10px 30px rgba(26, 13, 46, 0.5);
+      box-shadow: 0 -15px 40px rgba(26, 13, 46, 0.4),
+                  0 0 0 1px rgba(139, 92, 246, 0.2) inset;
       position: relative;
       bottom: 0;
       width: 100%;
       user-select: none;
       border-top: 3px solid var(--color-4);
-      margin-top: 3em;
+      margin-top: 3.5em;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     /* Mobile Responsive Styles */
     @media (max-width: 768px) {
-      body::before,
-      body::after {
-        background-size: 50% 50%, 50% 50%, 50% 50%, 20px 20px, 20px 20px;
+      body {
+        background-position: center top;
+        background-attachment: scroll;
       }
 
       header {
         margin: 1.5em 1em;
-        padding: 2em 1.5em 2.5em 1.5em;
-        border-radius: 16px;
+        padding: 2.2em 1.5em 2.8em 1.5em;
+        border-radius: 18px;
       }
 
       header h1 {
@@ -328,42 +363,54 @@
       }
 
       section {
-        margin: 0 1em 1.5em 1em;
-        padding: 1.8em 1.5em;
+        margin: 0 1em 1.8em 1em;
+        padding: 2em 1.6em;
         font-size: 1em;
-        border-radius: 16px;
+        border-radius: 18px;
       }
 
       h2 {
         font-size: 1.8em;
-        margin-bottom: 0.5em;
+        margin-bottom: 0.6em;
+      }
+
+      h2::after {
+        width: 60px;
+        height: 4px;
+      }
+
+      p {
+        font-size: 1em;
+        margin: 0.8em 0 1.2em 0;
       }
 
       table {
         font-size: 0.95em;
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      th, td {
-        padding: 14px 16px;
-        min-width: 120px;
+        margin-top: 1.5em;
       }
 
       th {
-        font-size: 0.85em;
+        padding: 16px 18px;
+        font-size: 0.88em;
+      }
+
+      td {
+        padding: 14px 18px;
       }
 
       footer {
-        padding: 1.5em 1em;
+        padding: 1.8em 1em;
         font-size: 1em;
-        margin-top: 2em;
+        margin-top: 2.5em;
       }
     }
 
     @media (max-width: 480px) {
+      header {
+        margin: 1.2em 0.8em;
+        padding: 1.8em 1.2em 2.2em 1.2em;
+      }
+
       header h1 {
         font-size: 1.8em;
       }
@@ -373,7 +420,7 @@
       }
 
       header p {
-        font-size: 1em;
+        font-size: 0.95em;
       }
 
       h2 {
@@ -381,23 +428,32 @@
       }
 
       section {
-        padding: 1.5em 1.2em;
-        margin: 0 0.8em 1.2em 0.8em;
+        padding: 1.6em 1.2em;
+        margin: 0 0.8em 1.4em 0.8em;
+      }
+
+      p {
+        font-size: 0.95em;
       }
 
       table {
-        font-size: 0.9em;
+        font-size: 0.88em;
+        margin-top: 1.2em;
       }
 
-      th, td {
+      th {
         padding: 12px 14px;
-        min-width: 100px;
+        font-size: 0.8em;
       }
-    }
 
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
+      td {
+        padding: 11px 14px;
+      }
+
+      footer {
+        padding: 1.4em 0.8em;
+        font-size: 0.95em;
+      }
     }
   </style>
 </head>
