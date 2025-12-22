@@ -17,9 +17,6 @@
       --color-8: #ede9fe;
       --color-accent: #f97316;
       --color-success: #10b981;
-      --color-bg: #faf5ff;
-      --color-gradient-start: rgba(139, 92, 246, 0.15);
-      --color-gradient-end: rgba(249, 115, 22, 0.08);
     }
 
     * {
@@ -28,7 +25,13 @@
 
     body {
       margin: 0;
-      background: url('https://img.freepik.com/free-photo/green-abstract-background_23-2151820761.jpg') center center fixed;
+      /* UPDATED: Abstract Gradient Background (Blue/Purple/Green) */
+      background-color: var(--color-1);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 60%);
+      background-attachment: fixed; /* Keeps background still while scrolling */
       background-size: cover;
       font-family: 'Quicksand', sans-serif;
       color: var(--color-1);
@@ -41,19 +44,6 @@
       padding: 2em 1em;
     }
 
-    /* Overlay for better text readability */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      pointer-events: none;
-      z-index: 0;
-    }
-
     /* Content wrapper for layering */
     header, section, footer {
       position: relative;
@@ -64,18 +54,18 @@
       max-width: 900px;
       margin: 0 auto 1.5em auto;
       padding: 2.5em 2.5em 3em 2.5em;
-      background: linear-gradient(135deg, rgba(108, 59, 214, 0.75) 0%, rgba(139, 92, 246, 0.75) 100%);
+      /* UPDATED: More transparency for glass effect */
+      background: rgba(139, 92, 246, 0.25); 
       border-radius: 20px;
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 
-                  0 15px 30px rgba(139, 92, 246, 0.6),
-                  0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+                  0 0 0 1px rgba(255, 255, 255, 0.2) inset;
       color: white;
       text-align: center;
       letter-spacing: 0.05em;
       font-weight: 700;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(20px); /* Increased blur */
+      -webkit-backdrop-filter: blur(20px);
     }
 
     header h1 {
@@ -114,19 +104,20 @@
       max-width: 900px;
       margin: 0 auto 2em auto;
       padding: 2em 2.5em;
-      background: rgba(255, 255, 255, 0.65);
+      /* UPDATED: High transparency for floating effect */
+      background: rgba(255, 255, 255, 0.1); 
       border-radius: 20px;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 
-                  0 15px 30px rgba(139, 92, 246, 0.3),
-                  0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 
+                  0 0 0 1px rgba(255, 255, 255, 0.1) inset;
       opacity: 0;
       transform: translateY(40px);
       transition: all 0.7s cubic-bezier(.22,.61,.36,1);
       border-left: 8px solid var(--color-4);
-      border-right: 1px solid var(--color-7);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
       font-weight: 600;
       font-size: 1.1em;
-      color: var(--color-2);
+      /* UPDATED: Text color to white/light for better contrast on dark bg */
+      color: #ede9fe; 
       letter-spacing: 0.02em;
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px);
@@ -138,13 +129,14 @@
     }
 
     h2 {
-      color: var(--color-3);
+      color: var(--color-6); /* Lightened for contrast */
       font-weight: 800;
       font-size: 2.2em;
       margin-bottom: 0.6em;
       letter-spacing: 0.03em;
       position: relative;
       padding-bottom: 0.3em;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     h2::after {
@@ -160,12 +152,12 @@
 
     p {
       margin: 0.8em 0 1.3em 0;
-      color: var(--color-2);
+      color: #e0e7ff; /* Lightened text */
       line-height: 1.7;
     }
 
     p strong {
-      color: var(--color-3);
+      color: var(--color-4);
       font-weight: 700;
     }
 
@@ -174,23 +166,24 @@
       border-collapse: collapse;
       margin-top: 1.5em;
       border-radius: 16px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
-                  0 10px 20px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       opacity: 0;
       transform: translateY(40px);
       transition: all 0.7s cubic-bezier(.22,.61,.36,1);
       font-weight: 600;
       letter-spacing: 0.02em;
       font-size: 1.1em;
-      background: rgba(255, 255, 255, 0.75);
+      /* UPDATED: Table glass effect */
+      background: rgba(255, 255, 255, 0.1); 
       overflow: hidden;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     table thead,
     table tbody {
-      border: 2px solid var(--color-6);
+      border: none;
     }
 
     table.visible {
@@ -201,38 +194,13 @@
     th, td {
       padding: 18px 24px;
       text-align: left;
-      color: var(--color-2);
-      border-right: 2px solid var(--color-6);
-      border-bottom: 2px solid var(--color-7);
+      color: #ede9fe; /* Light text */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
     }
-
-    th:first-child,
-    td:first-child {
-      border-left: 2px solid var(--color-6);
-    }
-
-    th {
-      border-top: 2px solid var(--color-6);
-    }
-
-    tbody tr:last-child td {
-      border-bottom: 2px solid var(--color-6);
-    }
-
-    th:first-child {
-      border-top-left-radius: 14px;
-    }
-
-    th:last-child {
-      border-top-right-radius: 14px;
-    }
-
-    tbody tr:last-child td:first-child {
-      border-bottom-left-radius: 14px;
-    }
-
-    tbody tr:last-child td:last-child {
-      border-bottom-right-radius: 14px;
+    
+    th:last-child, td:last-child {
+        border-right: none;
     }
 
     tbody tr {
@@ -240,12 +208,12 @@
     }
 
     tbody tr:hover {
-      background-color: var(--color-8);
+      background-color: rgba(255, 255, 255, 0.1);
       transform: scale(1.01);
     }
 
     th {
-      background: linear-gradient(135deg, var(--color-4) 0%, var(--color-3) 100%);
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.8) 0%, rgba(108, 59, 214, 0.8) 100%);
       color: white;
       font-weight: 800;
       letter-spacing: 0.05em;
@@ -261,28 +229,27 @@
     td:nth-child(3) {
       color: var(--color-success);
       font-weight: 700;
+      text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
     }
 
     footer {
-      background: linear-gradient(135deg, rgba(45, 27, 78, 0.75) 0%, rgba(26, 13, 46, 0.75) 100%);
+      background: rgba(26, 13, 46, 0.6);
       color: var(--color-7);
       text-align: center;
       padding: 2em 1.5em;
       font-weight: 700;
       font-size: 1.1em;
       letter-spacing: 0.08em;
-      box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.5),
-                  0 -10px 20px rgba(26, 13, 46, 0.6);
+      box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.5);
       position: relative;
       width: calc(100% - 2em);
       max-width: 900px;
       margin: 3em auto 0 auto;
       user-select: none;
-      border-top: 3px solid var(--color-4);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px;
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px);
-      border: 3px solid rgba(255, 255, 255, 0.2);
     }
 
     /* Tablet Responsive Styles */
